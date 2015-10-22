@@ -15,10 +15,14 @@
           %a{:href => edit_user_registration_path }
             %span.glyphicon.glyphicon-cog 
             Settings
+        %li
+          %a{:href => bg_new_path}
+            %span.glyphicon.glyphicon-plus
+            Add Blog
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         %li
-          %a{:href => destroy_user_session_path}
+          %a{:href => destroy_user_session_path }
             %span.glyphicon.glyphicon-user 
             Sign Out
       - else
