@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
