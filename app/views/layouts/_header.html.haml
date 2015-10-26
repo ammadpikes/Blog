@@ -1,0 +1,42 @@
+%nav.navbar.navbar-default.navbar-fixed-top.topnav{:role => "navigation"}
+  .container.topnav
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.topnav{:href => "#"}
+        %span.glyphicon.glyphicon-tint
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => root_path } Home
+        %li
+          %a{:href => "#" } About
+        %li
+          %a{:href => "#" } Contact
+        - if user_signed_in?
+          %li
+            %a{:href => edit_user_registration_path }
+              %span.glyphicon.glyphicon-cog 
+              Settings
+          %li
+            %a{:href => "#"}
+              %span.glyphicon.glyphicon-plus
+              Add Blog
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li
+            %a{:href => destroy_user_session_path }
+              %span.glyphicon.glyphicon-user 
+              Sign Out
+        - else
+          %li
+            %a{:href =>  new_user_registration_path }
+              %span.glyphicon.glyphicon-user 
+              Sign Up
+          %li
+            %a{:href => new_user_session_path }
+              %span.glyphicon.glyphicon-log-in 
+              Login
