@@ -43,7 +43,14 @@ class BloggersController < ApplicationController
   end
 
   def destroy
-    
+    @blogs = Blogger.find_by(params[:id])
+    if @blogs.destroy
+      flash[:success] = "Blog Deleted Successfully"
+      redirect_to bloggers_path
+    else
+      flash.now[:danger] = "Error Deleting Blog"
+      redirect_to bloggers_path
+    end
   end
 
   private

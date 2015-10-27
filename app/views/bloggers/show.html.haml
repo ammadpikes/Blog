@@ -11,4 +11,4 @@
       .col-lg-12 
         = link_to 'Edit',  edit_blogger_path(@blogs), class: 'btn btn-primary'
 
-        =link_to 'Show All Blogs', bloggers_path, class: 'btn btn-warning'
+        =link_to 'Delete Blog', blogger_path(@blogs), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you Sure?'}
