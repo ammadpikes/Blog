@@ -1,54 +1,47 @@
 class BloggersController < ApplicationController
 
-  before_action :user_signed_in?, only: [:index, :edit, :update, 
-                :destroy]
+  before_action :user_signed_in?, only: [:index, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @blogs = current_user.bloggers.all
+    @blog = current_user.bloggers.all.order('created_at DESC')
   end
 
   def new
-    @blogs = Blogger.new
+    @blog = Blogger.new
   end
 
   def create
-    @blogs = current_user.bloggers.new(user_params)
-    if @blogs.save
-      flash[:success] = "Blog Saved Successfully"
-      redirect_to @blogs
+    @blog = current_user.bloggers.new(user_params)
+    if @blog.save
+      redirect_to @blog
     else
-      flash.now[:danger] = "Error Saving Blog"
       render 'new'
     end
   end
 
   def show
-    @blogs = Blogger.find_by(params[:id])
+    @blog = Blogger.find_by(id: params[:id])
   end
 
   def edit
-    @blogs = Blogger.find_by(params[:id])
+    @blog = Blogger.find_by(params[:id])
   end
 
   def update
-    @blogs = Blogger.find_by(params[:id])
-    if @blogs.update(user_params)
-      flash[:success] = "Blog Updated Successfully"
-      redirect_to @blogs
+    @blog = Blogger.find_by(params[:id])
+    if @blog.update(user_params)
+      redirect_to @blog
     else
-      flash.now[:danger] = "Error Saving Blog"
       render 'edit'
     end
   end
 
   def destroy
-    @blogs = Blogger.find_by(params[:id])
-    if @blogs.destroy
-      flash[:success] = "Blog Deleted Successfully"
+    @blog = Blogger.find_by(params[:id])
+    if @blog.destroy
       redirect_to bloggers_path
     else
-      flash.now[:danger] = "Error Deleting Blog"
       redirect_to bloggers_path
     end
   end

@@ -1,14 +1,25 @@
-- provide(:title, "#{@blogs.title}")
+- provide(:title, "#{@blog.title}")
+
 .generic-container
   .container
     .row
       .col-lg-12
-        %h1= "Title: #{@blogs.title}"
+        %h1= "Title: #{@blog.title}"
     .row
       .col-lg-12
-        %p= "#{@blogs.content}"
-    .row
-      .col-lg-12 
-        = link_to 'Edit',  edit_blogger_path(@blogs), class: 'btn btn-primary'
+        %p= "#{@blog.content}"
+    .row.pull-right
+      .col-lg-12
+        = link_to 'Edit',  edit_blogger_path(@blog), class: 'btn btn-primary'
 
-        =link_to 'Delete Blog', blogger_path(@blogs), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you Sure?'}
+        =link_to 'Delete Blog', blogger_path(@blog), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you Sure?'}
+  .container
+    .row
+      %h2
+        = @blog.comments.count
+        Comments
+      = render @blog.comments.order('created_at DESC')
+  .container 
+    .row
+      %h3 Add a comment
+      = render "comments/form"

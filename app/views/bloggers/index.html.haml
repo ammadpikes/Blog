@@ -1,11 +1,11 @@
 - provide(:title, 'User Blogs')
 .generic-container
-- if !@blogs.empty?
+- if !@blog.empty?
   .container
     %h2= "All Blogs"
     .row
       .col-lg-12
-        - @blogs.each do |blog_item|
+        - @blog.each do |blog_item|
           %table.table.table-bordered.center
             %tr.info
               %th Blog Creator

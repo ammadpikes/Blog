@@ -1,11 +1,11 @@
-= form_for(@blogs) do |f|
-  - if @blogs.errors.any?
+= form_for(@blog) do |f|
+  - if @blog.errors.any?
     #error_explanation
       %h2
-        = pluralize(@blogs.errors.count, "error")
+        = pluralize(@blog.errors.count, "error")
         prohibited this blog from being saved:
       %ul
-        - @blogs.errors.full_messages.each do |message|
+        - @blog.errors.full_messages.each do |message|
           %li= message
   .field
     = f.label :title, class: 'text-label'
