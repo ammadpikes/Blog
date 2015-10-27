@@ -29,7 +29,7 @@ class BloggersController < ApplicationController
   end
 
   def update
-    @blog = Blogger.find_by(params[:id])
+    @blog = Blogger.find_by(id: params[:id])
     if @blog.update(user_params)
       redirect_to @blog
     else
@@ -38,7 +38,7 @@ class BloggersController < ApplicationController
   end
 
   def destroy
-    @blog = Blogger.find_by(params[:id])
+    @blog = Blogger.find_by(id: params[:id])
     if @blog.destroy
       redirect_to bloggers_path
     else
