@@ -1,0 +1,21 @@
+- provide(:title, 'User Blogs')
+.generic-container
+- if !@blogs.empty?
+  .container
+    %h2= "All Blogs"
+    .row
+      .col-lg-12
+        - @blogs.each do |blog_item|
+          %table.table.table-bordered.center
+            %tr.info
+              %th Blog Creator
+              %th Title
+              %th Content
+              %th Actions
+            %tr
+              %td= blog_item.user.email
+              %td= blog_item.title
+              %td= blog_item.content
+              %td= link_to 'Show', blogger_path(blog_item)
+- else
+  =render partial: 'blank_slate'

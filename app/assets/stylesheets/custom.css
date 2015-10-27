@@ -30,7 +30,7 @@ h6 {
 }
 
 .intro-header {
-    padding-top: 30px;  /*If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 40px;  /*If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
    text-align: center;
     color: #757575;
 }
@@ -74,6 +74,17 @@ h6 {
     padding-top: 10px;
 }
 
+.color-class, color-class a{
+    color:#4CAF50;
+}
+
+table th {
+    text-align: center;
+}
+
+table td {
+    text-align: center;
+}
 
 
 

@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand.topnav{:href => "#"}
-        %span.glyphicon.glyphicon-tint
+        %span.glyphicon.glyphicon-tint.color-class
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
@@ -22,14 +22,18 @@
               %span.glyphicon.glyphicon-cog 
               Settings
           %li
-            %a{:href => "#"}
+            %a{:href => new_blogger_path}
               %span.glyphicon.glyphicon-plus
               Add Blog
+          %li
+            %a{:href => bloggers_path}
+              %span.glayphicon.glyphicon-th
+              All Blogs
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
             %a{:href => destroy_user_session_path }
-              %span.glyphicon.glyphicon-user 
+              %span.glyphicon.glyphicon-user
               Sign Out
         - else
           %li
@@ -38,5 +42,5 @@
               Sign Up
           %li
             %a{:href => new_user_session_path }
-              %span.glyphicon.glyphicon-log-in 
+              %span.glyphicon.glyphicon-log-in
               Login

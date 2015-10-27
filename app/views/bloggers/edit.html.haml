@@ -1,0 +1,7 @@
+.generic-container
+  .row
+    .col-md-6.col-md-offset-3
+      %h1= "Editing Blog with Id : #{@blogs.id}"
+      = render 'form'
+      %br/
+      = link_to 'Go Back', blogger_path, class: 'btn btn-danger'
