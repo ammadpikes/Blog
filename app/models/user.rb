@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   # Upper Mentioed all Functions are available in this application. That's why declared like that.
 
+  def username
+    self.email.split('@').first.upcase
+  end
+
 end

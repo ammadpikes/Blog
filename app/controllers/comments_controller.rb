@@ -13,7 +13,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    
+    blog = Blogger.find(params[:blogger_id])
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      respond_to do |format|
+        format.html {  }
+        format.js
+      end
+    end
   end
 
 

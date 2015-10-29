@@ -37,9 +37,10 @@ class BloggersController < ApplicationController
 
   def destroy
     if @blog.destroy
-      redirect_to bloggers_path
-    else
-      redirect_to bloggers_path
+    respond_to do |format|
+      format.html { redirect_to bloggers_path }
+      format.js
+      end
     end
   end
 
