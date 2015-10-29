@@ -7,19 +7,25 @@
         %h1= "Title: #{@blog.title}"
     .row
       .col-lg-12
-        %p= "#{@blog.content}"
-    .row.pull-right
+        %p.text-justify= sanitize @blog.content, tags: %w(strong em a p), attributes: %w(href id class)
+    .row.pull-left
       .col-lg-12
-        = link_to 'Edit',  edit_blogger_path(@blog), class: 'btn btn-primary'
+        %br/
+        = link_to 'Go Back', bloggers_path, class: 'btn btn-danger'
+    /     = link_to 'Edit',  edit_blogger_path(@blog), class: 'btn btn-primary'
 
-        =link_to 'Delete Blog', blogger_path(@blog), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you Sure?'}
+    /     =link_to 'Delete Blog', blogger_path(@blog), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you Sure?'}
   .container
     .row
-      %h2
-        = @blog.comments.count
-        Comments
-      = render @blog.comments.order('created_at DESC')
-  .container 
-    .row
-      %h3 Add a comment
-      = render "comments/form"
+      .col-lg-12
+        %br/
+        %br/ 
+        = link_to "Comments", "#", id: "comments-link"
+    .row.comment-section
+      .col-lg-12
+        #comments-all
+        = render @blog.comments.order('created_at DESC')
+  .container
+    .row.comment-section
+      .col-lg-12 
+        = render "comments/form"

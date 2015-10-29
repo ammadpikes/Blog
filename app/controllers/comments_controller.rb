@@ -5,7 +5,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(strong_params)
-    redirect_to blogger_path(params[:blogger_id])
+
+    respond_to do |format|
+      format.html {  redirect_to blogger_path(params[:blogger_id]) }
+      format.js
+    end
   end
 
   def destroy

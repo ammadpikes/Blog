@@ -1,7 +1,7 @@
 .divider-box
   %p
     %h5
-      %strong= comment.name
+      %strong= comment.user.email
       commented
       =time_ago_in_words(comment.created_at)
       ago:

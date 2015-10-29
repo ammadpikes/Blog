@@ -1,15 +1,13 @@
-= form_for([@blog, @blog.comments.build]) do |f|
-  = f.label :name
-  %br
-    = f.text_field :name
+.add-comment
+  = form_for [@blog, @blog.comments.new], remote: true do |f|
+    %br/
+    %br/
+    = f.label "Add Comment :"
     %br
-      %br
-        = f.label :content
-        %br
-          = f.text_area :content, size: "40x4"
-          %br
-          =f.hidden_field :blogger_id, value: "#{@blog.id}"
-          %br
-          =f.hidden_field :user_id, value: "#{current_user.id}"
-          %br
-            = f.submit class: 'btn btn-success'
+    %br
+    = f.text_area :content, size: "40x4"
+    %br
+    =f.hidden_field :blogger_id, value: "#{@blog.id}"
+    %br
+    =f.hidden_field :user_id, value: "#{current_user.id}"
+    = f.submit class: 'btn btn-success'
