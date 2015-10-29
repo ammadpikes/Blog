@@ -18,7 +18,8 @@
               %td= truncate(blog_item.content, length: 80)
               %td
                 = link_to 'Show', blogger_path(blog_item), class: 'btn btn-link'
-                = link_to 'Edit',  edit_blogger_path(blog_item), class: 'btn btn-link'
-                =link_to 'Delete', blogger_path(blog_item), class: 'btn btn-link', method: :delete, data: {confirm: 'Are you Sure?'}
+                -if current_user.id == blog_item.user.id
+                  = link_to 'Edit',  edit_blogger_path(blog_item), class: 'btn btn-link'
+                  =link_to 'Delete', blogger_path(blog_item), class: 'btn btn-link', method: :delete, data: {confirm: 'Are you Sure?'}
 - else
   =render partial: 'blank_slate'

@@ -5,16 +5,15 @@
     .row
       .col-lg-12
         %h1= "Title: #{@blog.title}"
+        - if current_user.id == @blog.user.id
+          = link_to 'Edit', edit_blogger_path(@blog), class: 'btn, btn-link'
     .row
       .col-lg-12
-        %p.text-justify= sanitize @blog.content, tags: %w(strong em a p), attributes: %w(href id class)
+        %p.text-justify= raw sanitize @blog.content, tags: %w(strong em a p), attributes: %w(href id class)
     .row.pull-left
       .col-lg-12
         %br/
-        = link_to 'Go Back', bloggers_path, class: 'btn btn-danger'
-    /     = link_to 'Edit',  edit_blogger_path(@blog), class: 'btn btn-primary'
-
-    /     =link_to 'Delete Blog', blogger_path(@blog), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you Sure?'}
+        = link_to 'Go Back', bloggers_path, class: 'btn btn-primary'
   .container
     .row
       .col-lg-12

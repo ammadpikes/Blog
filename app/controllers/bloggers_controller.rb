@@ -5,7 +5,7 @@ class BloggersController < ApplicationController
   before_action :get_blog_by_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blog = current_user.bloggers.all.order('created_at DESC')
+    @blog = Blogger.all.order('created_at DESC')
   end
 
   def new
