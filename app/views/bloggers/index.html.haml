@@ -1,0 +1,25 @@
+- provide(:title, 'User Blogs')
+.generic-container
+- if !@blog.empty?
+  .container
+    %h2= "All Blogs"
+    .row
+      .col-lg-12
+        %table.table.table-bordered.center
+          %tr.info
+            %th Blog Creator
+            %th Title
+            %th Content
+            %th Actions
+          - @blog.each do |blog_item|
+            %tr
+              %td= blog_item.user.email
+              %td= blog_item.title
+              %td= truncate(blog_item.content, length: 80)
+              %td
+                = link_to 'Show', blogger_path(blog_item), class: 'btn btn-link'
+                -if current_user.id == blog_item.user.id
+                  = link_to 'Edit',  edit_blogger_path(blog_item), class: 'btn btn-link'
+                  =link_to 'Delete', blogger_path(blog_item), :remote => true ,class: 'btn btn-link delete_post', method: :delete, data: {confirm: 'Are you Sure?'}
+- else
+  =render partial: 'blank_slate'
