@@ -8,9 +8,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'haml'
+gem 'paperclip'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -25,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :developmentm, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'

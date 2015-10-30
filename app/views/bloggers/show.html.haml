@@ -4,6 +4,11 @@
   .container
     .row
       .col-lg-12
+        %h5
+          = "Created By : "
+          = image_tag @blog.user.image.url(:thumb), {"class"=> "avatar img-thumbnail", "data-toggle" => "tooltip", "title" => "#{@blog.user.email}", "data-placement" => "right"}
+    .row
+      .col-lg-12
         %h1= "Title: #{@blog.title}"
         - if current_user.id == @blog.user.id
           = link_to 'Edit', edit_blogger_path(@blog), class: 'btn, btn-link'
@@ -28,3 +33,4 @@
     .row.comment-section
       .col-lg-12 
         = render "comments/form"
+

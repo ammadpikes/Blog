@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027111048) do
+ActiveRecord::Schema.define(version: 20151030061644) do
 
   create_table "bloggers", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 20151027111048) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "image_file_name",        limit: 255
+    t.string   "image_content_type",     limit: 255
+    t.integer  "image_file_size",        limit: 4
+    t.datetime "image_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

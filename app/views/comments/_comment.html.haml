@@ -1,11 +1,8 @@
 .divider-box
-  %p
-    %h5
-      %strong= comment.user.email
-      commented
-      =time_ago_in_words(comment.created_at)
-      ago:
-      - if current_user.id == comment.user.id
-        = link_to "Delete",  blogger_comment_path(comment.blogger, comment), :remote => true ,class: 'btn btn-link delete_post', method: :delete, data: {confirm: 'Are you Sure?'}
+  %h5
+    = image_tag comment.user.image.url(:thumb), {"data-toggle" => "tooltip", "title" => "#{comment.user.email}", "class" =>"avatar img-thumbnail", "data-placement" => "top" }
+    = "commented #{time_ago_in_words(comment.created_at)}"
+    - if current_user.id == comment.user.id
+      = link_to "Delete",  blogger_comment_path(comment.blogger, comment), :remote => true ,class: 'btn btn-link delete_post', method: :delete, data: {confirm: 'Are you Sure?'}
   %h6= comment.content
 

@@ -103,6 +103,11 @@ table td {
     padding-bottom: 20px;
 }
 
+.avatar, .img-thumbnail{
+    width: 36px;
+    height: 36px;
+}
+
 
 @media(max-width:767px) {
     .intro-message {

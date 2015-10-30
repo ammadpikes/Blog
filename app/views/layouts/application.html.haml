@@ -16,3 +16,4 @@
     .container
       = render partial: "layouts/header"
       = yield
+      / = current_user.inspect if Rails.env.development?
