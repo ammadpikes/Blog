@@ -1,8 +1,9 @@
 - provide(:title, 'User Blogs')
 .generic-container
-- if !@blog.empty?
+- if !@blogs.empty?
   .container
     %h2= "All Blogs"
+    %br
     .row
       .col-lg-12
         %table.table.table-bordered.center
@@ -11,7 +12,7 @@
             %th Title
             %th Content
             %th Actions
-          - @blog.each do |blog_item|
+          - @blogs.each do |blog_item|
             %tr
               %td= image_tag blog_item.user.image.url(:thumb), {"data-toggle" => "tooltip", "title" => "#{blog_item.user.email}", "class" =>"avatar img-thumbnail", "data-placement" => "bottom" }
               %td= blog_item.title

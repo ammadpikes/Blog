@@ -13,6 +13,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'haml'
 gem 'paperclip'
+gem 'populator'
+gem 'faker'
+gem 'mailboxer'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -37,11 +40,4 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-end
-
-group :test do 
-  gem 'faker'
-  gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
-  gem 'capybara'
-  gem 'launchy'
 end

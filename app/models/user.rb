@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  acts_as_messageable
+
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url:  "http://www.sinaiem.org/people/files/2013/03/missing.png"
   
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
