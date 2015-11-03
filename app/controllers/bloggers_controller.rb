@@ -15,6 +15,7 @@ class BloggersController < ApplicationController
   def create
     @blog = current_user.bloggers.new(user_params)
     if @blog.save
+      flash[:info] = "Your Blog is being Sent to the Admins for review, please allow us some time."
       redirect_to bloggers_path
     else
       render 'new'
