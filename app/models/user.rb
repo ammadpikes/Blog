@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
+         # , :confirmable
 
   acts_as_messageable
 

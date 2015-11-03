@@ -1,6 +1,6 @@
 - provide(:title, 'User Blogs')
 .generic-container
-- if !@blogs.empty?
+- if @blogs.present?
   .container
     %h2= "All Blogs"
     %br
@@ -11,16 +11,24 @@
             %th Blog Creator
             %th Title
             %th Content
+            %th Status
             %th Actions
           - @blogs.each do |blog_item|
             %tr
               %td= image_tag blog_item.user.image.url(:thumb), {"data-toggle" => "tooltip", "title" => "#{blog_item.user.email}", "class" =>"avatar img-thumbnail", "data-placement" => "bottom" }
               %td= blog_item.title
               %td= truncate(blog_item.content, length: 80)
+              - if blog_item.is_published == false
+                %td
+                  %span.label.label-warning Pending
+              - else
+                %td
+                  %span.label.label-success Approved
               %td
-                = link_to 'Show', blogger_path(blog_item), class: 'btn btn-link'
-                -if current_user.id == blog_item.user.id
-                  = link_to 'Edit',  edit_blogger_path(blog_item), class: 'btn btn-link'
-                  =link_to 'Delete', blogger_path(blog_item), :remote => true ,class: 'btn btn-link delete_post', method: :delete, data: {confirm: 'Are you Sure?'}
+                - if blog_item.is_published
+                  = link_to 'Show', blogger_path(blog_item), class: 'btn btn-link'
+                  -if current_user.id == blog_item.user.id
+                    = link_to 'Edit',  edit_blogger_path(blog_item), class: 'btn btn-link'
+                    =link_to 'Delete', blogger_path(blog_item), :remote => true ,class: 'btn btn-link delete_post', method: :delete, data: {confirm: 'Are you Sure?'}
 - else
   =render partial: 'blank_slate'
