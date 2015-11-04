@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
          # , :confirmable
 
-  # For Mailboxer Gem
-  acts_as_messageable
 
   # For PaperClip Gem
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url:  "http://www.sinaiem.org/people/files/2013/03/missing.png"
