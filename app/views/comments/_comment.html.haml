@@ -1,6 +1,6 @@
 .divider-box
   %h5
-    = image_tag comment.user.image.url(:thumb), {"data-toggle" => "tooltip", "title" => "#{comment.user.email}", "class" =>"avatar img-thumbnail", "data-placement" => "top" }
+    = image_tag comment.user.image.url(:thumb), {"class"=> "avatar img-thumbnail", "data-toggle" => "tooltip", "title" => "#{comment.user.email}", "data-placement" => "top"}
     = "commented #{time_ago_in_words(comment.created_at)}"
     - if current_user.id == comment.user.id
       = link_to "Delete",  blogger_comment_path(comment.blogger, comment), :remote => true ,class: 'btn btn-link delete_post', method: :delete, data: {confirm: 'Are you Sure?'}

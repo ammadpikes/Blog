@@ -5,7 +5,7 @@ class BloggersController < ApplicationController
   before_action :get_blog_by_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blog = Blogger.all.order('created_at DESC')
+    @blogs = Blogger.all.paginate(:page => params[:page])
   end
 
   def new

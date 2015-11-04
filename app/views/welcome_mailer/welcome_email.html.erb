@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @user.username %></h1>
+    <p class="well">
+      Thank You very much for using Bloggers!
+    </p>
+    <p>
+      You have been successfully Signed up and ready to go!
+    </p>
+    <%= link_to "Go To Bloggers", root_path, class: "btn btn-success" %>
+  </body>
+</html>

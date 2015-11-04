@@ -1,5 +1,9 @@
-<p>Welcome <%= @email %>!</p>
+<h1 style="color:green;">Welcome <%= @email %>!</h1>
+
+<p>Thank you for your interest in Bloogers. </p>
 
 <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>
+<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+</p>
