@@ -17,18 +17,14 @@
         %li
           = link_to 'Conversations', "#"
         - if user_signed_in?
+          %li 
+            = link_to  'Add Blog', new_blogger_path
+          %li
+            = link_to 'All Blogs' ,bloggers_path
           %li
             %a{:href => edit_user_registration_path }
               %span.glyphicon.glyphicon-cog 
               Settings
-          %li
-            %a{:href => new_blogger_path}
-              %span.glyphicon.glyphicon-plus
-              Add Blog
-          %li
-            %a{:href => bloggers_path}
-              %span.glayphicon.glyphicon-th
-              All Blogs
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
