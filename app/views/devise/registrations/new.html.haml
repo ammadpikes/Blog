@@ -5,9 +5,17 @@
       = form_for resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true } do |f|
         = devise_error_messages!
         .field
+          = f.label "First Name", class: "text-label"
+          %br/
+          = f.text_field :first_name, autofocus: true
+          .field
+          = f.label "Last Name", class: "text-label"
+          %br/
+          = f.text_field :last_name
+        .field
           = f.label :email, class: "text-label"
           %br/
-          = f.email_field :email, autofocus: true
+          = f.text_field :email
         .field
           = f.label :password, class: "text-label"
           - if @minimum_password_length

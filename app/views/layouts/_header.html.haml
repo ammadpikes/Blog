@@ -26,10 +26,11 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
-            = link_to 'Conversations', "#user"
+            = link_to 'Mailbox',  conversations_path
           %li
             %a{:href => destroy_user_session_path }
-              = "#{current_user.username} | Sign out"
+              = current_user.first_name || 'User' 
+              = "| Sign out"
         - else
           %li
             %a{:href =>  new_user_registration_path }

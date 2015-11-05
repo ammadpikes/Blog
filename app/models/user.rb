@@ -4,11 +4,15 @@ class User < ActiveRecord::Base
   has_many :bloggers, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
+  validates :first_name, length: { minimum: 30 }
+
   # Devise Methods
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # , :confirmable
 
+  # For Messages
+  has_many :conversations, :foreign_key => :sender_id
 
   # For PaperClip Gem
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url:  "http://www.sinaiem.org/people/files/2013/03/missing.png"

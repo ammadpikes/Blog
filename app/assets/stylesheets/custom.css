@@ -85,6 +85,10 @@ table td {
     text-align: center;
 }
 
+.clickable-row {
+    cursor: pointer;
+}
+
 
 .divider-box {
     border-radius: 6px;

@@ -1,0 +1,30 @@
+<div class="generic-container">
+
+  <h2><%= "Conversation With " + to_whom_user_chatting.first_name ||to_whom_user_chatting.email %>
+   <%= link_to "Go Back", conversations_path , class: "btn btn-link" %>
+  </h2>
+  <br>
+    <% @messages.each do |message| %>
+      <% if message.message_body %>
+        <% user = User.find(message.user_id) %>
+        <div class="well">
+          <%= "(" + user.first_name + ")" %> &#9658;
+          <%= message.message_body %>
+          <div class="pull-right">
+          <h6><%= time_ago_in_words(message.created_at) + " ago" %></h6>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= form_for [@conversation, @message] do |f| %>
+      <div class="field">
+        <%= f.text_area :message_body, class: "form-control", size: "3x6" %>
+      </div>
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+      <div>
+        <br>
+        <%= f.submit "Add Reply", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+</div>
