@@ -26,7 +26,8 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
-            = link_to 'Mailbox',  conversations_path
+            %a{:href => conversations_path }
+              Mailbox
           %li
             %a{:href => destroy_user_session_path }
               = current_user.first_name || 'User' 

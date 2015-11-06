@@ -16,7 +16,8 @@ gem 'haml'
 gem 'paperclip'
 gem 'populator'
 gem 'faker'
-gem 'mailboxer'
+gem "private_pub"
+gem "thin"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc

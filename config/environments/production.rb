@@ -16,20 +16,21 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'pikessoftone.herokuapp.com' }
 
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: 'gmail.com',
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: 'checkammadbaig@gmail.com',
-    password: 'Sampleemail'
-  }
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address  => 'smtp.gmail.com',
+    :port => "587",
+    :domain => "gmail.com",
+    :user_name => "checkammadbaig@gmail.com",
+    :password => "checkemail",
+    :authentication => "plain",
+    :enable_starttls_auto => true
+}
+
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.

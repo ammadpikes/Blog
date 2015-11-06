@@ -1,22 +1,23 @@
 class User < ActiveRecord::Base
   
+
   # Model Associations
   has_many :bloggers, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :conversations, :foreign_key => :sender_id
+  has_many :messages, through: :conversations
 
-  validates :first_name, length: { minimum: 30 }
+  validates :first_name, length: { minimum: 3 }
 
   # Devise Methods
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # , :confirmable
 
-  # For Messages
-  has_many :conversations, :foreign_key => :sender_id
-
   # For PaperClip Gem
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url:  "http://www.sinaiem.org/people/files/2013/03/missing.png"
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   
   # Method for username extracted from the email
   def username

@@ -12,7 +12,7 @@
             <thead>
               <tr class="success">
                 <th>Conversation With</th>
-                <th>Title</th>
+                <th>Last Message</th>
                 <th>Time</th>
                 <th>Actions</th>
               </tr>
@@ -28,7 +28,7 @@
                   <td>
                     <%= image_tag receiver.image.url(:thumb), "data-toggle" => "tooltip", "title" => "#{ receiver.first_name || "user" }", "class" =>"avatar img-thumbnail", "data-placement" => "bottom" %>
                   </td>
-                  <td><%= conversation.messages.first.message_body.truncate(40) %>
+                  <td><%= conversation.messages.last.message_body.truncate(40) %>
                   </td>
                   <td>
                     <%= time_ago_in_words(conversation.updated_at) %>
@@ -51,14 +51,16 @@
         <% end %>
       </div>
     </div>
-
+  <% if @users.length <= 1 %>
+    <h4> No User In Database To Chat with!</h4>
+  <% end %>
     <div class="row">
       <div class="col-lg-12">
       <br><br>
         <% @users.each do |user| %>
-          <% if user.id != current_user.id %>
-            <%= user.first_name || user.username + " | " %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: 'post', class: "btn btn-parimary" %>
-            <% end %>
+             <% if user.id != current_user.id %>
+              <%= user.first_name || user.username + " | " %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: 'post', class: "btn btn-parimary" %>
+              <% end %>
           <% end %>
       </div>
     </div>
